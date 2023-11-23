@@ -18,7 +18,7 @@ class Vehicle {
   // --- getFullInfo() - повертає рядок з інформацією про транспортний засіб: бренд, модель, вік;
   // --- getAge() - повертає кількість років із дня виробництва (буде плюсом реалізувати геттером).
   getFullInfo() {
-    return `${this.brand}; ${this.model}; Age ${this.getAge} years`;
+    return `${this.brand}; ${this.model}; Age ${this.getAge} years; Dimensions: ${this.dimensions}`;
   }
   get getAge() {
     const currentYear = new Date().getFullYear();
@@ -67,16 +67,11 @@ class FreightTransport extends Vehicle {
   }
 }
 // Створити об'єкти всіх класів ієрархії, протестувати роботу методів.
-const car = new Vehicle(
-  { length: 5135, width: 1945, height: 1460 },
-  "Audi",
-  "A8",
-  "2014"
-);
+const car = new Vehicle("Compact", "Audi", "A8", "2014");
 console.log(car.getFullInfo());
 
 const bus = new PassengerTransport(
-  { length: 6967, width: 2025, height: 2820 },
+  "Medium",
   "Mercedes-Benz",
   "Sprinter",
   "2006",
@@ -86,12 +81,6 @@ console.log(bus.getFullInfo());
 console.log("Add passenger :>> ", bus.addPassenger());
 console.log("Passenger count :>> ", bus.passengerCount);
 
-const truck = new FreightTransport(
-  { length: 8460, width: 2495, height: 3513 },
-  "Volvo",
-  "FH",
-  "2021",
-  15000
-);
+const truck = new FreightTransport("Large", "Volvo", "FH", "2021", 15000);
 console.log(truck.getFullInfo());
 console.log("Loading possibility :>> ", truck.checkLoadingPossibility(12000));
