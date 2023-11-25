@@ -5,7 +5,7 @@
 // // (За бажанням:) Вантажний Транспорт (FreightTransport) => ТранспортнийЗасіб (Vehicle).
 // // // Для базового класу Vehicle реалізувати:
 // // - властивості:
-// --- dimensions - габарити (об'єкт із довжиною, шириною, висотою), brand - марка, model - модель,
+// --- dimensions - габарити, brand - марка, model - модель,
 // --- manufactureDate - дата виробництва (використовувати вбудований об'єкт Date).
 class Vehicle {
   constructor(dimensions, brand, model, manufactureDate) {
@@ -18,9 +18,9 @@ class Vehicle {
   // --- getFullInfo() - повертає рядок з інформацією про транспортний засіб: бренд, модель, вік;
   // --- getAge() - повертає кількість років із дня виробництва (буде плюсом реалізувати геттером).
   getFullInfo() {
-    return `${this.brand}; ${this.model}; Age ${this.getAge} years; Dimensions: ${this.dimensions}`;
+    return `${this.brand}; ${this.model}; Age ${this.age} years; Dimensions: ${this.dimensions}`;
   }
-  get getAge() {
+  get age() {
     const currentYear = new Date().getFullYear();
     return currentYear - this._manufactureDate.getFullYear();
   }
@@ -32,7 +32,7 @@ class PassengerTransport extends Vehicle {
   constructor(dimensions, brand, model, manufactureDate, passengerLimit) {
     super(dimensions, brand, model, manufactureDate);
     this.passengerLimit = passengerLimit;
-    this.passengerCount = 2;
+    this.passengerCount = 0;
   }
   // // - методом addPassenger() - додає ще одного пасажира, якщо ще є вільні місця;
   // повертає true (якщо пасажир доданий) або false (якщо не доданий, тобто вже не було вільних місць).
